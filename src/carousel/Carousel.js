@@ -66,7 +66,8 @@ export default class Carousel extends Component {
         useScrollView: PropTypes.bool,
         vertical: PropTypes.bool,
         onBeforeSnapToItem: PropTypes.func,
-        onSnapToItem: PropTypes.func
+        onSnapToItem: PropTypes.func,
+        styleIndicator: PropTypes.object
     };
 
     static defaultProps = {
@@ -97,7 +98,8 @@ export default class Carousel extends Component {
         shouldOptimizeUpdates: true,
         swipeThreshold: 20,
         useScrollView: !AnimatedFlatList,
-        vertical: false
+        vertical: false,
+        styleIndicator: {}
     }
 
     constructor (props) {
@@ -1146,7 +1148,8 @@ export default class Carousel extends Component {
             sliderHeight,
             sliderWidth,
             slideStyle,
-            vertical
+            vertical,
+            styleIndicator
         } = this.props;
 
         const animatedValue = interpolators && interpolators[index];
@@ -1185,7 +1188,7 @@ export default class Carousel extends Component {
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                     { renderItem({ item, index }, parallaxProps) }
                 </View>
-                <Component style={[{width: "100%", height: 3, backgroundColor: "gray" }, animatedBottom]}/>
+                <Component style={[{width: "100%", height: 3, backgroundColor: "#717171" }, animatedBottom, styleIndicator]}/>
             </Component>
         );
     }
